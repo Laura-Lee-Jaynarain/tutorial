@@ -3,6 +3,7 @@
 Git is a system that lets developers create, manage, compare, share, and restore project snapshots across multiple timelines
 
 ## Structure
+```
 .git/
 │── HEAD           --> current position pointer
 │── config         --> stores project settings
@@ -10,7 +11,7 @@ Git is a system that lets developers create, manage, compare, share, and restore
 │── refs/          --> named pointers
 │── logs/          --> tracks reference movement ( used in recovery)
 │── index          --> staging area
-
+```
 
 **objects/** 
 Git mainly stores:
@@ -152,7 +153,7 @@ git remote
 
 
 ## basic workflow map
-
+```
 Start Work
 ↓
 Get Latest Code
@@ -171,7 +172,53 @@ Open Pull Request / Merge
 ↓
 Repeat
 
+```
+__*branch strategy*__
 
+```
+main      = stable production code
+dev       = active integration branch
+feature/* = new features
+hotfix/*  = urgent fixes
+```
+
+*Keep your local work daily updated*
+
+```bash
+git switch main
+git pull origin main
+git switch feature-branch
+git merge main
+```
+__*Merge Conflic*__
+```bash
+git pull
+# conflict appears
+```
+Then:
+1. Open file
+2. Choose correct code
+3. Save file
+4. Run
+
+*_Diagnostic sequence_*
+```bash
+git status
+git branch
+git log --oneline --graph
+git reflog
+```
+*Recovery ladder*
+
+```
+Uncommitted issue?   restore
+Staging issue?       restore --staged
+Last commit issue?   amend / reset
+Lost history?        reflog
+Conflict?            status + resolve
+Need temporary save? stash
+Remote mistake?      revert
+```
 
 ## Resources
 
@@ -179,6 +226,11 @@ Repeat
 
 ### Getting started
 
+connnect to GitHub
+```bash
+git remote add origin <repo-url>
+git push -u origin main
+```
 start a new repo 
 ```bash
  git init 
@@ -449,6 +501,12 @@ copy one commit onto the current branch:
   ``` bash
  git cherry-pick <commit>
  ```
+
+ Cancel a Merge
+ ```bash
+ git merge --abort
+ ```
+
  ### Restore an old file
 
  Get the version of a file from another commit
