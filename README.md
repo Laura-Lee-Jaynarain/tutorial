@@ -1,6 +1,140 @@
 # Git Cheat Sheet
 
+Git is a system that lets developers create, manage, compare, share, and restore project snapshots across multiple timelines
+
+## Structure
+.git/
+│── HEAD           --> current position pointer
+│── config         --> stores project settings
+│── objects/       --> git data as compressed objects ( objects are hashed)
+│── refs/          --> named pointers
+│── logs/          --> tracks reference movement ( used in recovery)
+│── index          --> staging area
+
+
+**objects/** 
+Git mainly stores:
+
+- blobs --> file contents
+- trees --> file structure
+- commits --> snapshots + metadata
+- tags
+
+A commit stores:
+- pointer to tree
+- author
+- timestamp
+- message
+- parent commit
+
+Stores project settings:
+- remote URLs
+- branch tracking
+- merge settings
+
+**Git is action based** :
+(think in verbs)
+
+| Verb    | Meaning               |
+| ------- | --------------------- |
+| add     | prepare changes       |
+| commit  | save snapshot         |
+| push    | send to remote        |
+| pull    | receive updates       |
+| fetch   | download updates only |
+| clone   | copy repo             |
+| branch  | manage branches       |
+| merge   | combine histories     |
+| switch  | change branch         |
+| restore | undo file changes     |
+| reset   | move history pointer  |
+| status  | inspect state         |
+| log     | view history          |
+
+**workflow mastery**
+
+We’ll cover:
+- Starting projects
+- Team collaboration
+- Pulling updates safely
+- Fixing conflicts
+- Feature branches
+- Clean commit habits
+- Production deployment flow
+
+
+**Debugging & recovery**
+
+Learn how to recover from:
+- Wrong commits
+- Deleted files
+- Merge conflicts
+- Detached HEAD
+- Broken branches
+- Accidentally pushed secrets
+- Undo mistakes safely
+
+## Roadmap
+
+**Phase 1** — Understand Git Core
+- What is Git?
+- Why developers use it
+- Git architecture
+- Local workflow
+**Phase 2** — Command Fluency
+- init
+- clone
+- add
+- commit
+- status
+- log
+**Phase 3** — Collaboration
+- branch
+- checkout / switch
+- merge
+- pull
+- push
+- fetch
+**Phase 4** — Advanced
+- rebase
+- stash
+- cherry-pick
+- reset
+- reflog
+**Phase 5** — Real World
+- GitHub workflows
+- Open source contribution
+- CI/CD
+
 ## Basic grammer
+
+```bash
+git <verb> <target> <options>
+```
+
+long flag -- 
+short flag - 
+## basic workflow map
+
+Start Work
+↓
+Get Latest Code
+↓
+Create / Switch Branch
+↓
+Code Changes
+↓
+Stage Changes
+↓
+Commit Changes
+↓
+Push to Remote
+↓
+Open Pull Request / Merge
+↓
+Repeat
+
+
 
 ## Resources
 
