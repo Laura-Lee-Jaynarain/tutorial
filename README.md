@@ -109,11 +109,48 @@ Learn how to recover from:
 ## Basic grammer
 
 ```bash
-git <verb> <target> <options>
+git <command/verb> <options> <target>
 ```
+
+*!Order Matters*
 
 long flag -- 
 short flag - 
+
+**Command Families**
+inspection family
+```bash
+git status
+git log
+git diff
+git show
+```
+
+Change family
+```bash
+git add
+git commit
+git restore
+git reset
+```
+Branch Family
+```Bash
+git branch
+git switch
+git merge
+git rebase
+```
+
+Remote Family
+```bash
+git clone
+git push
+git pull
+git fetch
+git remote
+```
+
+
 ## basic workflow map
 
 Start Work
