@@ -2,6 +2,10 @@
 
 ## Basic grammer
 
+## Resources
+
+[git cheat sheet](https://git-scm.com/cheat-sheet)
+
 ### Getting started
 
 start a new repo 
@@ -163,6 +167,211 @@ force delete a branch
  git show <commit> --stat
  ```
 
- Discard your changes
- 
+### Discard your changes
 
+Delete unstaged changes
+  ``` bash
+ git restore <file>
+ ```
+or
+  ``` bash
+ git checkour <file>
+ ```
+
+Delete all staged and unstaged changes to one file
+  ``` bash
+ git restore --staged --worktree <file>
+ ```
+ or
+   ``` bash
+ git checkout HEAD <file>
+ ```
+ Delete all staged and unstaged changes:
+   ``` bash
+ git reset --hard
+ ```
+Delete untracked files
+  ``` bash
+ git clean
+ ```
+
+ 'Stash' all staged and unstaged changes:
+   ``` bash
+ git stash
+ ```
+
+### Edit history
+
+"Undo" the most recent commit ( keep your working directory the same)
+  ``` bash
+ git reset HEAD^
+ ```
+
+squash the last 5 commits into one:
+  ``` bash
+ git rebase -i HEAD~6
+ ```
+ undo a failed rebase
+   ``` bash
+ git reflog BRANCHNAME
+ git reset --hard <commit>
+ ```
+
+ Change commit message (or add a file you forgot)
+   ``` bash
+ git commit --amend
+ ```
+
+ ### Code archaeology
+
+ Look at branch's history:
+   ``` bash
+ git log main
+ git log --graph main
+ git log  --online
+ ```
+
+ show every commit that modified a file
+   ``` bash
+ git log <file>
+ ```
+ 
+ show every commit that modified a file, including before it was renamed
+   ``` bash
+ git log --follow <file>
+ ```
+
+ Show who last changed each line of a file
+   ``` bash
+ git blame <file>
+ ```
+ Find every commit that added or removed some text
+   ``` bash
+ git log -G banana
+ ```
+
+ ### Combined Diverged Branches
+
+Combine with rebase
+  ``` bash
+ git switch banana
+ git rebase main
+ ```
+ combine with merge
+   ``` bash
+ git switch main
+ git merge <another branch>
+ ```
+combine with squash merge
+  ``` bash
+ git switch main
+ git merge --squash <another branch>
+ git commit
+ ```
+
+Bring a branch up to date with another branch
+  ``` bash
+ git switch main
+ git merge < another branch>
+ ```
+copy one commit onto the current branch:
+  ``` bash
+ git cherry-pick <commit>
+ ```
+ ### Restore an old file
+
+ Get the version of a file from another commit
+   ``` bash
+ git checkout <commit> <file>
+ ```
+ or
+   ``` bash
+ git restore <file> --source <commit>
+ ```
+
+ ### Add a Remote
+   ``` bash
+ git remote add <name> <url>
+ ```
+
+ ### Push Your Changes
+
+ Push the `main` branch to the remote `origin`:
+   ``` bash
+ git push origin main
+ ``` 
+ Push a branch that you've never pushed before:
+   ``` bash
+ git push -u origin <name>
+ ```
+ push tags:
+   ``` bash
+ git push --tags
+ ```
+
+ Push the current branch to its remote "tracking branch"
+   ``` bash
+ git push
+ ```
+ Force push:
+   ``` bash
+ git push --force-with-lease
+ ```
+
+ ### pull changes
+  fetch your chanegs ( but don't change any of your local branches):
+``` bash
+ git fetch origin main
+ ```
+
+ Fetch changes and then rebase your current branch:
+   ``` bash
+ git pull --rebase
+ ```
+
+ Fetch changes and then merge them into your current branch:
+   ``` bash
+ git pull origin main
+ ```
+ or
+   ``` bash
+ git pull
+ ```
+
+ ### Configure Git
+
+ set a config option:
+   ``` bash
+ git config user.name ' your name '
+ ```
+
+ Set option globally:
+   ``` bash
+ git config --global...
+ ```
+
+ Add an alias:
+   ``` bash
+ git config alias.st status
+ ```
+
+ See all possible config options
+   ``` bash
+ man git-config
+ ```
+
+ ### Important files
+
+ Local git config
+   ``` bash
+ .git/config
+ ```
+ Global git config:
+   ``` bash
+ ~/.gitconfig
+ ```
+
+ List of files to ignore:
+   ``` bash
+ .gitignore
+ ```
